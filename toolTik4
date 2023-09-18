@@ -9,7 +9,7 @@ bot = telebot.TeleBot(token)
 
 my_id =  int("Your_id") 
 
-msg = "" # اتركها لا تخلي اي شي
+msg = "" # اتركها لا تخلي شي
 
 mainCommandsText = "اهلا بك يا مطوري في لوحة الاوامر!" # رساله المطور تكدر تعدلها
 
