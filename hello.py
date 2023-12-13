@@ -1,29 +1,79 @@
-import requests
-import random
-print('''
-               ╔┓┏╦━━╦┓╔┓╔━━╗ 
-               ║┏┓║┏━╣┗╣┗╣╰╯║ 
-               ╚┛┗╩━━╩━╩━╩━━╝
-               Dev : @prxey
-	
-''')
-litters = 'qwertyuiopasdfghjklzxcvbnm1234567890._'
+from telethon import TelegramClient, sync, errors
+from telethon.sessions import StringSession
+from telethon.tl.functions.account import CheckUsernameRequest, UpdateUsernameRequest
+from telethon.tl.functions.channels import JoinChannelRequest
+from telethon.tl.functions.messages import SendMessageRequest
+from datetime import datetime
+import random, time, requests, telebot , os
+R = '\033[1;31m'
+y = '\033[1;33m'
+G= "\033[1;92m"
+chat_id = input('- Enter Id : ')
+token = input('- Enter Token : ')
+try:
+	bot = telebot.TeleBot(token)
+except:
+	exit('- Trun On Vpn / Error Token Bot')
+def check(client, username):
+    global bot
+    global chat_id
+    requ = requests.get("https://fragment.com/username/" + username)
+    if '<span class="tm-section-header-status tm-status-avail">Available</span>' in requ.text:
+        print(y+"Username For Sale : " + username)
+        return "sale"
+    time.sleep(2)
+    try:
+        result = client(CheckUsernameRequest(username=username))
+        if result:
+            print(G+"Username Available : " + username)
+            bot.send_message(chat_id=chat_id,text=username)
+        else:
+            print(R+"Username Not Available : " + username)
+    except errors.FloodWaitError as timb:
+        print(f'You Have Been Blocked Wait {timb.seconds}')
+        time.sleep(timb.seconds)
+    except errors.UsernameInvalidError:
+        print(R+"Username Invalid : " + username)
+    except errors.rpcbaseerrors.BadRequestError:
+        print(R+"Username Banned : " + username)
 
-id = input("[+] Enter Id : ")
-token = input("[+] Enter Bot Token : ")
-sessionid = input("Enter your sessionid : ")
-
-hea = {
-        'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-        'user-agent': 'user-agent: Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html',
-        'Cookie': 'sessionid='+sessionid,
-    }
-while True:
-    user = str("".join(random.choice(litters)for x in range(6)))
-    tiko = f'https://www.tiktok.com/api/user/detail/?aid=1988&app_language=ar&app_name=tiktok_web&battery_info=0.32&browser_language=ar&browser_name=Mozilla&browser_online=true&browser_platform=MacIntel&browser_version=5.0%20%28Macintosh%3B%20Intel%20Mac%20OS%20X%2010_15_7%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F109.0.0.0%20Safari%2F537.36&channel=tiktok_web&cookie_enabled=true&device_id=7193110014067459586&device_platform=web_pc&focus_state=true&from_page=user&history_len=10&is_fullscreen=false&is_page_visible=true&language=ar&os=mac&priority_region=&referer=&region=SA&screen_height=900&screen_width=1440tz_name=Asia%2FRiyadh&uniqueId={user}&verifyFp=verify_ldvov399_du9goymx_OHxC_4RTw_AEjU_Dth4CFGFw3lR&webcast_language=ar&msToken=f7RQRFGwBsu3WXbrhdLVX9gDRSynM_O_C7U9SX6WNqZqmb0QEsNO6H3dJ10pMAxt24bmyb2eMNPzUpr8w8-6Wx-xAawe1R6vbD6HZdDoWTPL4VOHo6ebwjHadXlUoyhG9ovbpBnhHipd_EWG&X-Bogus=DFSzswVY9D0ANeIIShUJbR/F6qHH&_signature=_02B4Z6wo00001xH2Y0gAAIDCaTiITAKYgosR9mfAAKeo28'
-    reqsnd = requests.get(tiko, headers=hea).text
-    if '"statusCode":10221,' in reqsnd:
-            print(f'DonE : {user}')
-            requests.post(f"https://api.telegram.org/bot{token}/sendMessage?chat_id={id}&video=https://t.me/mmmmmmm0/4&caption=এ〔 𝑼𝒔𝒆𝒓𝒏𝒂𝒎𝒆 〕: {user}\nএ〔 𝒂𝑩𝒐𝒐𝑫 〕: @prxey")
-    else:
-    	 print(f'BaD : {user}')
+def username(client):
+    AB = 'QWERTYUIOPASDFGHJKLZXCVBNM'
+    num = '1234567890'
+    while True:
+        mm = str("".join(random.choice(AB) for i in range(1)))
+        nn = str("".join(random.choice(AB) for i in range(1)))
+        ww = str("".join(random.choice(num) for i in range(1)))
+        hh = str("".join(random.choice(AB) for i in range(1)))
+        c = (mm + mm + mm + "_" + nn )
+        c1 = (mm + "_" + nn + "_" + hh)
+        c2 = (ww + "_" + ww + mm + ww)
+        c3 = (mm + "mm + hh + "_" + hh)
+        c4 = (hh + "_" + mm + mm + mm)
+        c5 = (nn  + mm + mm + "_" + mm)
+        c6 = (mm + "_" + nn + nn + nn)
+        c7 = (hh  + mm + ww + ww + ww)
+        c8 = (mm + hh + ww + ww + ww)
+        user = (c,c1,c2,c3,c4,c5,c6,c7,c8)
+        username = str("".join(random.choice(user)))
+        check(client, username)
+api_id = input('- Enter Api_Id : ')
+api_hash = input('- Enter Api_Hash : ')
+def session1():
+    client = TelegramClient(StringSession(), api_id, api_hash)
+    client.start()
+    session = client.session.save()
+    client.disconnect()
+    return session
+def main():
+    session = session1()
+    client = TelegramClient(StringSession(session), api_id, api_hash)
+    try:
+    	client.start()
+    except:
+    	exit('- Error Api_Id , Api_Hash')
+    client(JoinChannelRequest('@ToGoLang'))
+    os.system('clear')
+    username(client)
+    client.disconnect()
+main()
