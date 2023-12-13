@@ -48,7 +48,7 @@ def username(client):
         c = (mm + mm + mm + "_" + nn )
         c1 = (mm + "_" + nn + "_" + hh)
         c2 = (ww + "_" + ww + mm + ww)
-        c3 = (mm + "mm + hh + "_" + hh)
+        c3 = (mm + mm + hh + "_" + hh)
         c4 = (hh + "_" + mm + mm + mm)
         c5 = (nn  + mm + mm + "_" + mm)
         c6 = (mm + "_" + nn + nn + nn)
