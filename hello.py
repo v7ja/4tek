@@ -1,40 +1,80 @@
-import datetime
-import time
-import pyrogram
-from pyrogram import Client
-import requests
-import os
-from time import sleep
-from pyrogram.errors import FloodWait, BadRequest
-import re
-import datetime
-current_time = datetime.datetime.now().time()
-hours = current_time.hour
-minutes = current_time.minute
-seconds = current_time.second
-tok = input("EnTeR ToK :")
-idown = 6330435571
-qq = 0
-ok = requests.post(f'https://api.telegram.org/bot{tok}/sendMessage?chat_id={idown}&text=𝖿ᥙᥴ𝗄!')
-app = Client("ACCC", api_id=13066983, api_hash="154e45eb588378308ad53f9bb8ed4bed",bot_token="6756691141:AAGwzBR4UwPYwt3YRYwgUjX7W5DBzE-3ga0")
-with app:
- while True:
-    username = set(filter(None, open("user.txt").read().split("\n")))
-    for user in username:
-        qq += 1
-        print(qq)
-        url = f"https://t.me/{user}"
-        sleep(0.1)
-        req = requests.get(url)
-        if req.text.find('If you have <strong>Telegram</strong>, you can contact <a class="tgme_username_link"') >= 0:
-                op = requests.post(f'''https://api.telegram.org/bot{tok}/sendvideo?chat_id={idown}&video=https://t.me/aonrigh/187&caption=
-𝗇𝖾𝗐 𝖿𝗅𝗈𝗈𝖽 𝗎𝗌𝖾𝗋 , 𝖺𝖻𝗈𝗈𝖽 𝗒𝖺𝖻'𝗁 🇮🇶 
-এ〔 𝗎𝗌𝖾𝗋𝗇𝖺𝗆𝖾 〕: 〔 @{user} 〕
-এ〔 𝗍𝗂𝗆𝖾 〕: 〔 {hours}:{minutes}:{seconds} 〕
-এ〔 𝖻𝗒 〕: @Prxey''')
-                with open("user.txt", "r") as file:
-                    lines = file.readlines()
-                with open("user.txt", "w") as file:
-                    for line in lines:
-                     if user not in line:
-                        file.write(line)
+from telethon import TelegramClient, sync, errors
+from telethon.sessions import StringSession
+from telethon.tl.functions.account import CheckUsernameRequest, UpdateUsernameRequest
+from telethon.tl.functions.channels import JoinChannelRequest
+from telethon.tl.functions.messages import SendMessageRequest
+from datetime import datetime
+import random, time, requests, telebot , os
+R = '\033[1;31m'
+y = '\033[1;33m'
+G= "\033[1;92m"
+chat_id = input('- Enter Id : ')
+token = input('- Enter Token : ')
+try:
+	bot = telebot.TeleBot(token)
+except:
+	exit('- Trun On Vpn / Error Token Bot')
+def check(client, username):
+    global bot
+    global chat_id
+    requ = requests.get("https://fragment.com/username/" + username)
+    if '<span class="tm-section-header-status tm-status-avail">Available</span>' in requ.text:
+        print("UserName Available In Fragment : " + username)
+        return "sale"
+    time.sleep(2)
+    try:
+        result = client(CheckUsernameRequest(username=username))
+        if result:
+            print(G+"UserName Available : " + username)
+            bot.send_message(chat_id=chat_id,text=username)
+        else:
+            print(R+"UserName Not Available : " + username)
+    except errors.FloodWaitError as timb:
+        print(f'You Have Been Blocked Wait {timb.seconds}')
+        time.sleep(timb.seconds)
+    except errors.UsernameInvalidError:
+        print(R+"Username Invalid : " + username)
+    except errors.rpcbaseerrors.BadRequestError:
+        print(R+"Username Banned : " + username)
+
+def username(client):
+    AB = 'QWERTYUIOPASDFGHJKLZXCVBNM'
+    num = '1234567890'
+    while True:
+        mm = str("".join(random.choice(AB) for i in range(1)))
+        nn = str("".join(random.choice(AB) for i in range(1)))
+        ww = str("".join(random.choice(num) for i in range(1)))
+        hh = str("".join(random.choice(AB) for i in range(1)))
+        c = (mm + mm + mm + "_" + nn )
+        c1 = (mm + "_" + nn + "_" + hh)
+        c2 = (mm + "_" + mm + mm + ww)
+        c3 = (mm + mm + mm + "_" + hh)
+        c4 = (hh + "_" + mm + mm + mm)
+        c5 = (nn  + mm + mm + "_" + mm)
+        c6 = (mm + "_" + nn + nn + nn)
+        c7 = (hh  + mm + ww + ww + ww)
+        c8 = (mm + hh + ww + ww + ww)
+        c9 = (mm + mm + ww + nn + nn)
+        user = (c,c1,c2,c3,c4,c5,c6,c7,c8,c9)
+        username = str("".join(random.choice(user)))
+        check(client, username)
+api_id = input('- Enter Api_Id : ')
+api_hash = input('- Enter Api_Hash : ')
+def session1():
+    client = TelegramClient(StringSession(), api_id, api_hash)
+    client.start()
+    session = client.session.save()
+    client.disconnect()
+    return session
+def main():
+    session = session1()
+    client = TelegramClient(StringSession(session), api_id, api_hash)
+    try:
+    	client.start()
+    except:
+    	exit('- Error Api_Id , Api_Hash')
+    client(JoinChannelRequest('@yabhiraq'))
+    os.system('clear')
+    username(client)
+    client.disconnect()
+main()
