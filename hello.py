@@ -25,29 +25,14 @@ def li(message):
     done=0
     
     while True:
-    	AB ='qwertyuiopasdfghjklzxcvbnm'
-                num = '1234567890'
-                f = '_.'
+    	AB ='qwertyuiopasdfghjklzxcvbnm1234567890'
     	aa = str("".join(random.choice(AB) for i in range(1)))
     	bb = str("".join(random.choice(AB) for i in range(1)))
-                dd = str("".join(random.choice(num) for i in range(1)))
-                abd = str("".join(random.choice(f) for i in range(1)))
-                c1 = (aa + bb + aa + abd + aa)
-                c2 = (aa + aa + aa + abd + bb)
-                c3 = (aa + dd + aa + dd + aa)
-                c4 = (aa + aa + abd + aa + aa)
-                c5 = (bb + bb + bb + aa + aa)
-                c6 = (aa + dd + dd + aa + dd)
-                c7 = (aa + abd + aa + abd + dd)
-                c8 = (dd + abd + dd + abd + aa)
-                c9 = (bb + dd + bb + abd + bb)
-                c10 = (abd + abd + aa + aa + abd)
-                c11 = (bb + bb + dd + dd + dd)
-                c12 = (aa + aa + aa + abd + aa)
-                c13 = (aa + abd + dd + dd + dd)
-                c14 = (aa + aa + dd + dd + dd)
-                user = (c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14)
-                
+        c = (aa + bb + aa + "_" + bb)
+        c1 = (aa + "_" + bb + aa + aa)
+        c2 = (bb + bb + bb + "_" + aa)
+        c3 = (aa + bb + bb + "_" + aa)
+        user = (c,c1,c2,c3)         
     	req = requests.get(f'https://t.me/{user}').text
     	if '"robots"' in req:
     	       done+=1
