@@ -24,15 +24,27 @@ def li(message):
     error=0
     done=0
     
+    def username(client):
+    AB = 'QWERTYUIOPASDFGHJKLZXCVBNM'
+    num = '1234567890'
     while True:
-    	AB ='qwertyuiopasdfghjklzxcvbnm1234567890'
-    	aa = str("".join(random.choice(AB) for i in range(1)))
-    	bb = str("".join(random.choice(AB) for i in range(1)))
-        c = (aa + bb + aa + "_" + bb)
-        c1 = (aa + "_" + bb + aa + aa)
-        c2 = (bb + bb + bb + "_" + aa)
-        c3 = (aa + bb + bb + "_" + aa)
-        user = (c,c1,c2,c3)         
+        mm = str("".join(random.choice(AB) for i in range(1)))
+        nn = str("".join(random.choice(AB) for i in range(1)))
+        ww = str("".join(random.choice(num) for i in range(1)))
+        hh = str("".join(random.choice(AB) for i in range(1)))
+        c = (mm + mm + mm + "_" + nn )
+        c1 = (mm + "_" + nn + "_" + hh)
+        c2 = (mm + "_" + mm + mm + ww)
+        c3 = (mm + mm + mm + "_" + hh)
+        c4 = (hh + "_" + mm + mm + mm)
+        c5 = (nn  + mm + mm + "_" + mm)
+        c6 = (mm + "_" + nn + nn + nn)
+        c7 = (hh  + mm + ww + ww + ww)
+        c8 = (mm + hh + ww + ww + ww)
+        c9 = (mm + mm + ww + nn + nn)
+        user = (c,c1,c2,c3,c4,c5,c6,c7,c8,c9)
+        username = str("".join(random.choice(user)))
+        check(client, username)
     	req = requests.get(f'https://t.me/{user}').text
     	if '"robots"' in req:
     	       done+=1
@@ -40,7 +52,7 @@ def li(message):
 •----------------------------------------•
 Username - ( @{user} )
 •----------------------------------------•
-@GG8MG""",parse_mode="html")
+@i_7rR""",parse_mode="html")
     	else:
     	       error+=1
     	       ws = types.InlineKeyboardMarkup(row_width=1)
