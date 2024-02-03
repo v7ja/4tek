@@ -15,7 +15,7 @@ def start(message):
     mss = types.InlineKeyboardMarkup()
     mss.row_width = 1
     mss.add(ds,me)
-    bot.send_video(message.chat.id,h, caption="""𝒘𝒆𝒍𝒄𝒐𝒎𝒆 𝒕𝒐 𝒃𝒐𝒕 𝒃𝒚 : @i_7rR"""),parse_mode='html',reply_markup=mss)
+    bot.send_video(message.chat.id,h, caption="𝒘𝒆𝒍𝒄𝒐𝒎𝒆 𝒕𝒐 𝒃𝒐𝒕 𝒃𝒚 : @i_7rR"),parse_mode='html',reply_markup=mss)
 @bot.callback_query_handler(func=lambda call:True)
 def qwere(call):
     if call.data =='mos':
