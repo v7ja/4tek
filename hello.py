@@ -1,68 +1,71 @@
+import telebot
 import os
-import sys
-import random
+from telebot import types
 import requests
-import threading
-tuks1 ='qwertyuioplkjhgfdsazxcvbnm'
-R = '\033[1;32m'
-G = '\033[1;31m'
-E = '\033[1;33m'
-K = '\033[1;39m'
-F =('='*60)
-H=(f"""{R}{F}
-                   💤 7rR | عَبود
-                @l6303
-                                                         
-{F}""")
-print(H)
-try:
-	RUKS3 = int(input('عدد احرف الميل :'))
-except:
-	print('='*20)
-	print(G+'راجاء وضع ارقام فقط')
-	exit(0)
-os.system('clear')
-print(H)
-RUKS_HED = {
-                        "Accept": "*/*",
-                        "Content-Type": "application/x-www-form-urlencoded",
-                        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36",
-                        "Connection": "close",
-                        "Host": "odc.officeapps.live.com",
-                        "Accept-Encoding": "gzip, deflate",
-                        "Referer": "https://odc.officeapps.live.com/odc/v2.0/hrd?rs=ar-sa&Ver=16&app=23&p=6&hm=0",
-                        "Accept-Language": "ar,en-US;q=0.9,en;q=0.8",
-                        "canary": "BCfKjqOECfmW44Z3Ca7vFrgp9j3V8GQHKh6NnEESrE13SEY/4jyexVZ4Yi8CjAmQtj2uPFZjPt1jjwp8O5MXQ5GelodAON4Jo11skSWTQRzz6nMVUHqa8t1kVadhXFeFk5AsckPKs8yXhk7k4Sdb5jUSpgjQtU2Ydt1wgf3HEwB1VQr+iShzRD0R6C0zHNwmHRnIatjfk0QJpOFHl2zH3uGtioL4SSusd2CO8l4XcCClKmeHJS8U3uyIMJQ8L+tb:2:3c",
-                        "uaid": "d06e1498e7ed4def9078bd46883f187b",
-                        "Cookie": "xid=d491738a-bb3d-4bd6-b6ba-f22f032d6e67&&RD00155D6F8815&354"       
-                        }
-AS= 0
-DS = 0                  
-def ruks():
-	global AS
-	global DS		       	            	
-	while True:			
-		RuKs = str("".join(random.choice(tuks1)for i in range(RUKS3)))			
-		j_n_q = "https://odc.officeapps.live.com/odc/emailhrd/getidp?hm=0&emailAddress="+RuKs+'@hotmail.com'+ "&_=1604288577990"
-		RUKS_data = ''  		
-		RUks = requests.get (j_n_q, data=RUKS_data, headers=RUKS_HED)
-	
-		if 'MSAccount' in RUks.text:
-			AS+=1			
-			print(f"""\r{E}Not Available: {G}{AS} {E}:Available: {R}{DS} {K};{RuKs}@hotmail.com""", end="")
-			with open('Not Available.txt', 'a') as x:
-				x.write(RuKs+'@hotmail.com'+ '\n')						
-		else:	
-			DS+=1
-			print(f"""\r{E}Not Available: {G}{AS} {E}:Available: {R}{DS} {K};{RuKs}@hotmail.com""", end="")
-			with open('Available.txt', 'a') as x:
-				x.write(RuKs+'@hotmail.com'+ '\n')			
-thread = []
-for i in range(100):
-	thread1 =threading.Thread(target=ruks)
-	thread1.start()
-	thread.append(thread1)
-for thread2 in thread:
-	thread2.join
+import random
+token = input(' Enter Token : ')
 
-         
+bot = telebot.TeleBot(token)
+ds = types.InlineKeyboardButton(text='Click HeaR To StarT',callback_data='mos')
+me = types.InlineKeyboardButton(text='aBooD',url='https://t.me/i_7rR')
+@bot.message_handler(commands=['start'])
+def start(message):
+    h = "https://telegra.ph/file/d5eb8964f7abc3c4fce1d.mp4"
+    xz = message.from_user.first_name
+    mss = types.InlineKeyboardMarkup()
+    mss.row_width = 1
+    mss.add(ds,me)
+    bot.send_video(message.chat.id,h, caption="""𝒘𝒆𝒍𝒄𝒐𝒎𝒆 𝒕𝒐 𝒃𝒐𝒕 𝒃𝒚 : @i_7rR"""),parse_mode='html',reply_markup=mss)
+@bot.callback_query_handler(func=lambda call:True)
+def qwere(call):
+    if call.data =='mos':
+        li(call.message)
+def li(message):
+    error=0
+    done=0
+    
+    while True:
+    	AB ='qwertyuiopasdfghjklzxcvbnm'
+                num = '1234567890'
+                f = '_.'
+    	aa = str("".join(random.choice(AB) for i in range(1)))
+    	bb = str("".join(random.choice(AB) for i in range(1)))
+                dd = str("".join(random.choice(num) for i in range(1)))
+                abd = str("".join(random.choice(f) for i in range(1)))
+                c1 = (aa + bb + aa + abd + aa)
+                c2 = (aa + aa + aa + abd + bb)
+                c3 = (aa + dd + aa + dd + aa)
+                c4 = (aa + aa + abd + aa + aa)
+                c5 = (bb + bb + bb + aa + aa)
+                c6 = (aa + dd + dd + aa + dd)
+                c7 = (aa + abd + aa + abd + dd)
+                c8 = (dd + abd + dd + abd + aa)
+                c9 = (bb + dd + bb + abd + bb)
+                c10 = (abd + abd + aa + aa + abd)
+                c11 = (bb + bb + dd + dd + dd)
+                c12 = (aa + aa + aa + abd + aa)
+                c13 = (aa + abd + dd + dd + dd)
+                c14 = (aa + aa + dd + dd + dd)
+                user = (c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14)
+                
+    	req = requests.get(f'https://t.me/{user}').text
+    	if '"robots"' in req:
+    	       done+=1
+    	       bot.send_message(message.chat.id,f"""Hit User Tele
+•----------------------------------------•
+Username - ( @{user} )
+•----------------------------------------•
+@GG8MG""",parse_mode="html")
+    	else:
+    	       error+=1
+    	       ws = types.InlineKeyboardMarkup(row_width=1)
+    	       v1 = types.InlineKeyboardButton(f" DonE [{done}]",callback_data='mn')
+    	       v2 = types.InlineKeyboardButton(f" BaD [{error}]",callback_data='mnm')
+    	       Check = types.InlineKeyboardButton(f" ChecK [{user}]",callback_data='asnm')
+    	       v3 = types.InlineKeyboardButton(f" Ptogrammer  ",url="https://t.me/i_7rR",callback_data='tynn')
+    	       v4 = types.InlineKeyboardButton(f" Channel   ",url="https://t.me/l6303",callback_data='mnn')
+    	       ws.add(v1,v2,v3,v4,Check)
+    	       bot.edit_message_text(chat_id=message.chat.id,message_id=message.message_id,text="(اهلا بك بدأ الصيد الان )",parse_mode='markdown',reply_markup=ws) 
+
+
+bot.polling(True)
