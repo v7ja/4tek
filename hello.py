@@ -25,13 +25,13 @@ def li(message):
     done=0
     
     def username(client):
-    AB = 'QWERTYUIOPASDFGHJKLZXCVBNM'
+    ab = 'QWERTYUIOPASDFGHJKLZXCVBNM'
     num = '1234567890'
     while True:
-        mm = str("".join(random.choice(AB) for i in range(1)))
-        nn = str("".join(random.choice(AB) for i in range(1)))
+        mm = str("".join(random.choice(ab) for i in range(1)))
+        nn = str("".join(random.choice(ab) for i in range(1)))
         ww = str("".join(random.choice(num) for i in range(1)))
-        hh = str("".join(random.choice(AB) for i in range(1)))
+        hh = str("".join(random.choice(ab) for i in range(1)))
         c = (mm + mm + mm + "_" + nn )
         c1 = (mm + "_" + nn + "_" + hh)
         c2 = (mm + "_" + mm + mm + ww)
