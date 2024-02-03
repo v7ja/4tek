@@ -1,80 +1,68 @@
-from telethon import TelegramClient, sync, errors
-from telethon.sessions import StringSession
-from telethon.tl.functions.account import CheckUsernameRequest, UpdateUsernameRequest
-from telethon.tl.functions.channels import JoinChannelRequest
-from telethon.tl.functions.messages import SendMessageRequest
-from datetime import datetime
-import random, time, requests, telebot , os
-R = '\033[1;31m'
-y = '\033[1;33m'
-G= "\033[1;92m"
-chat_id = input('- Enter Id : ')
-token = input('- Enter Token : ')
+import os
+import sys
+import random
+import requests
+import threading
+tuks1 ='qwertyuioplkjhgfdsazxcvbnm'
+R = '\033[1;32m'
+G = '\033[1;31m'
+E = '\033[1;33m'
+K = '\033[1;39m'
+F =('='*60)
+H=(f"""{R}{F}
+                   💤 7rR | عَبود
+                @l6303
+                                                         
+{F}""")
+print(H)
 try:
-	bot = telebot.TeleBot(token)
+	RUKS3 = int(input('عدد احرف الميل :'))
 except:
-	exit('- Trun On Vpn / Error Token Bot')
-def check(client, username):
-    global bot
-    global chat_id
-    requ = requests.get("https://fragment.com/username/" + username)
-    if '<span class="tm-section-header-status tm-status-avail">Available</span>' in requ.text:
-        print("UserName Available In Fragment : " + username)
-        return "sale"
-    time.sleep(2)
-    try:
-        result = client(CheckUsernameRequest(username=username))
-        if result:
-            print(G+"UserName Available : " + username)
-            bot.send_message(chat_id=chat_id,text=username)
-        else:
-            print(R+"UserName Not Available : " + username)
-    except errors.FloodWaitError as timb:
-        print(f'You Have Been Blocked Wait {timb.seconds}')
-        time.sleep(timb.seconds)
-    except errors.UsernameInvalidError:
-        print(R+"Username Invalid : " + username)
-    except errors.rpcbaseerrors.BadRequestError:
-        print(R+"Username Banned : " + username)
+	print('='*20)
+	print(G+'راجاء وضع ارقام فقط')
+	exit(0)
+os.system('clear')
+print(H)
+RUKS_HED = {
+                        "Accept": "*/*",
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36",
+                        "Connection": "close",
+                        "Host": "odc.officeapps.live.com",
+                        "Accept-Encoding": "gzip, deflate",
+                        "Referer": "https://odc.officeapps.live.com/odc/v2.0/hrd?rs=ar-sa&Ver=16&app=23&p=6&hm=0",
+                        "Accept-Language": "ar,en-US;q=0.9,en;q=0.8",
+                        "canary": "BCfKjqOECfmW44Z3Ca7vFrgp9j3V8GQHKh6NnEESrE13SEY/4jyexVZ4Yi8CjAmQtj2uPFZjPt1jjwp8O5MXQ5GelodAON4Jo11skSWTQRzz6nMVUHqa8t1kVadhXFeFk5AsckPKs8yXhk7k4Sdb5jUSpgjQtU2Ydt1wgf3HEwB1VQr+iShzRD0R6C0zHNwmHRnIatjfk0QJpOFHl2zH3uGtioL4SSusd2CO8l4XcCClKmeHJS8U3uyIMJQ8L+tb:2:3c",
+                        "uaid": "d06e1498e7ed4def9078bd46883f187b",
+                        "Cookie": "xid=d491738a-bb3d-4bd6-b6ba-f22f032d6e67&&RD00155D6F8815&354"       
+                        }
+AS= 0
+DS = 0                  
+def ruks():
+	global AS
+	global DS		       	            	
+	while True:			
+		RuKs = str("".join(random.choice(tuks1)for i in range(RUKS3)))			
+		j_n_q = "https://odc.officeapps.live.com/odc/emailhrd/getidp?hm=0&emailAddress="+RuKs+'@hotmail.com'+ "&_=1604288577990"
+		RUKS_data = ''  		
+		RUks = requests.get (j_n_q, data=RUKS_data, headers=RUKS_HED)
+	
+		if 'MSAccount' in RUks.text:
+			AS+=1			
+			print(f"""\r{E}Not Available: {G}{AS} {E}:Available: {R}{DS} {K};{RuKs}@hotmail.com""", end="")
+			with open('Not Available.txt', 'a') as x:
+				x.write(RuKs+'@hotmail.com'+ '\n')						
+		else:	
+			DS+=1
+			print(f"""\r{E}Not Available: {G}{AS} {E}:Available: {R}{DS} {K};{RuKs}@hotmail.com""", end="")
+			with open('Available.txt', 'a') as x:
+				x.write(RuKs+'@hotmail.com'+ '\n')			
+thread = []
+for i in range(100):
+	thread1 =threading.Thread(target=ruks)
+	thread1.start()
+	thread.append(thread1)
+for thread2 in thread:
+	thread2.join
 
-def username(client):
-    AB = 'QWERTYUIOPASDFGHJKLZXCVBNM'
-    num = '1234567890'
-    while True:
-        mm = str("".join(random.choice(AB) for i in range(1)))
-        nn = str("".join(random.choice(AB) for i in range(1)))
-        ww = str("".join(random.choice(num) for i in range(1)))
-        hh = str("".join(random.choice(AB) for i in range(1)))
-        c = (mm + mm + mm + "_" + nn )
-        c1 = (mm + "_" + nn + "_" + hh)
-        c2 = (mm + "_" + mm + mm + ww)
-        c3 = (mm + mm + mm + "_" + hh)
-        c4 = (hh + "_" + mm + mm + mm)
-        c5 = (nn  + mm + mm + "_" + mm)
-        c6 = (mm + "_" + nn + nn + nn)
-        c7 = (hh  + mm + ww + ww + ww)
-        c8 = (mm + hh + ww + ww + ww)
-        c9 = (mm + mm + ww + nn + nn)
-        user = (c,c1,c2,c3,c4,c5,c6,c7,c8,c9)
-        username = str("".join(random.choice(user)))
-        check(client, username)
-api_id = input('- Enter Api_Id : ')
-api_hash = input('- Enter Api_Hash : ')
-def session1():
-    client = TelegramClient(StringSession(), api_id, api_hash)
-    client.start()
-    session = client.session.save()
-    client.disconnect()
-    return session
-def main():
-    session = session1()
-    client = TelegramClient(StringSession(session), api_id, api_hash)
-    try:
-    	client.start()
-    except:
-    	exit('- Error Api_Id , Api_Hash')
-    client(JoinChannelRequest('@yabhiraq'))
-    os.system('clear')
-    username(client)
-    client.disconnect()
-main()
+         
