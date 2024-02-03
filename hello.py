@@ -22,12 +22,10 @@ def qwere(call):
         li(call.message)
 def li(message):
     error=0
-    done=0
+done=0
     
-
-
     while True:
-        us ='ABCDEFGHIJKLMNOPQRSTUVWXYZ_1234567890'
+    	us ='ABCDEFGHIJKLMNOPQRSTUVWXYZ_1234567890'
     	user = ("".join(random.choice(us)for i in range(5)))
     	
     	req = requests.get(f'https://t.me/{user}').text
@@ -37,7 +35,7 @@ def li(message):
 •----------------------------------------•
 Username - ( @{user} )
 •----------------------------------------•
-@i_7rR""",parse_mode="html")
+@GG8MG""",parse_mode="html")
     	else:
     	       error+=1
     	       ws = types.InlineKeyboardMarkup(row_width=1)
