@@ -24,27 +24,12 @@ def li(message):
     error=0
     done=0
     
-    def username(client):
-    ab = 'QWERTYUIOPASDFGHJKLZXCVBNM'
-    num = '1234567890'
+
+
     while True:
-        mm = str("".join(random.choice(ab) for i in range(1)))
-        nn = str("".join(random.choice(ab) for i in range(1)))
-        ww = str("".join(random.choice(num) for i in range(1)))
-        hh = str("".join(random.choice(ab) for i in range(1)))
-        c = (mm + mm + mm + "_" + nn )
-        c1 = (mm + "_" + nn + "_" + hh)
-        c2 = (mm + "_" + mm + mm + ww)
-        c3 = (mm + mm + mm + "_" + hh)
-        c4 = (hh + "_" + mm + mm + mm)
-        c5 = (nn  + mm + mm + "_" + mm)
-        c6 = (mm + "_" + nn + nn + nn)
-        c7 = (hh  + mm + ww + ww + ww)
-        c8 = (mm + hh + ww + ww + ww)
-        c9 = (mm + mm + ww + nn + nn)
-        user = (c,c1,c2,c3,c4,c5,c6,c7,c8,c9)
-        username = str("".join(random.choice(user)))
-        check(client, username)
+        us ='ABCDEFGHIJKLMNOPQRSTUVWXYZ_1234567890'
+    	user = ("".join(random.choice(us)for i in range(5)))
+    	
     	req = requests.get(f'https://t.me/{user}').text
     	if '"robots"' in req:
     	       done+=1
